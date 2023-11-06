@@ -27,7 +27,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
-.flaskenv.local
+.flaskenv
 
 
 
@@ -51,3 +51,6 @@ __pycache__/
 
 # Ignore Python source files
 *.py
+
+# Ignore text files
+*.txt
