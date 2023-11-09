@@ -20,13 +20,13 @@ const LoginPage = () => {
 
     // Google Handler Function
     const handleGoogleSignIn = async () => {
-        await signIn('google', { callbackUrl: 'http://localhost:3000' })
+        await signIn('google', { callbackUrl: 'http://localhost:3000/movies' })
 
     }
 
     // GitHub Handler Function
     const handleGitHubSignIn = async () => {
-        await signIn('github', { callbackUrl: 'http://localhost:3000' })
+        await signIn('github', { callbackUrl: 'http://localhost:3000/movies' })
 
     }
 
@@ -46,7 +46,7 @@ const LoginPage = () => {
             }
             if (response.status === 200) {
                 setMessage("Logged In Successfully")
-                router.push('/')
+                router.push('/movies')
             }
             
         } catch (error) { 

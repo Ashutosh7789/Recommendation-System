@@ -2,11 +2,11 @@
 
 
 export const navLinks = [
-  {
-    id: "home",
-    title: "Home",
-    url: "/",
-  },
+  // {
+  //   id: "home",
+  //   title: "Home",
+  //   url: "/",
+  // },
   {
     id: "movies",
     title: "Movie",

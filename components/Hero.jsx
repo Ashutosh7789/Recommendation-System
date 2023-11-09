@@ -135,7 +135,7 @@ useEffect(() => {
             </p>
           </div>
           {!isLoading && (
-          <div className="flex wide:absolute top-[30rem] xxl:top-[34rem] right-0 cursor-pointer select-none overflow-hidden"
+          <div className="flex wide:absolute top-[27rem] xxl:top-[34rem] right-0 cursor-pointer select-none overflow-hidden"
             >
               <div className="flex flex-row flex-1 xxl:max-w-[45rem]  wide:max-w-[36rem] w-full overflow-y-scroll max-md:max-w-[36rem] max-sm:max-w-[22rem]"
               ref={containerRef}

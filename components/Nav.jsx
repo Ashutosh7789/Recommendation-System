@@ -64,11 +64,11 @@ const Nav = () => {
                     ))}
                       {session && (
                         <ul className="flex flex-col items-center justify-end flex-1 gap-4 list-none">
-                            <li className="font-normal cursor-pointer text-[16px] text-white flex gap-2">
+                            {/* <li className="font-normal cursor-pointer text-[16px] text-white flex gap-2">
                                 <a href="/profile">
                                     Profile  
                                 </a>
-                            </li>
+                            </li> */}
 
                         <button type="button" className="text-white flex gap-2" onClick={handleSignOut}>
                                 Logout
@@ -101,14 +101,14 @@ const Nav = () => {
                   {menu && (
                         <div className="p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar">
                         <div className="flex flex-col gap-4 items-start">
-                        <ul className="flex flex-col items-center justify-end flex-1 gap-4 list-none">
+                        {/* <ul className="flex flex-col items-center justify-end flex-1 gap-4 list-none">
                               <li className="font-normal cursor-pointer text-[16px] text-white flex gap-2">
                                 <span><CgProfile size={25} /></span>
                                 <a href="/profile">
                                     Profile  
                                 </a>
                               </li>
-                        </ul>
+                        </ul> */}
                         <button type="button" className="text-white flex gap-2" onClick={handleSignOut}>
                               <span>
                               <MdLogout size={25} />

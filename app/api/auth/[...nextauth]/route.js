@@ -6,6 +6,8 @@ import { connectToDB } from '@/utils/Database';
 import { User } from "@/models/Schemas"
 import bcrypt from "bcrypt"
 
+
+
 export const authOptions ={
     providers: [
         GoogleProvider({
@@ -49,8 +51,6 @@ export const authOptions ={
             if (!sessionUser) {
                 return session;
             }
-            console.log(sessionUser)
-            
             session.user = sessionUser;
             return session;
             

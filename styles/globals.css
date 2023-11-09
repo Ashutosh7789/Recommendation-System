@@ -28,7 +28,7 @@
 }
 
 ::-webkit-scrollbar {
-   width: 1px;
+   display: none;
 }
   
 /* Style the scrollbar thumb for WebKit browsers */
