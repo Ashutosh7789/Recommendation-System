@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 
 const LoginPage = () => {
     
-    const router = useRouter()
+    const router = useRouter();
     const [show, setShow] = useState(false)
     const [user, setUser] = useState(
         {
@@ -20,14 +20,12 @@ const LoginPage = () => {
 
     // Google Handler Function
     const handleGoogleSignIn = async () => {
-        await signIn('google', { callbackUrl: 'http://localhost:3000/movies' })
-
+        await signIn('google', { callbackUrl: 'http://localhost:3000/movies' });
     }
 
     // GitHub Handler Function
     const handleGitHubSignIn = async () => {
-        await signIn('github', { callbackUrl: 'http://localhost:3000/movies' })
-
+        await signIn('github', { callbackUrl: 'http://localhost:3000/movies' });
     }
 
     // CredentialsProvider Handler Function 
@@ -40,7 +38,6 @@ const LoginPage = () => {
                 password: user.password,
                 redirect : false,
             })
-            console.log(response)
             if (response.status !== 200) {
                 setMessage("Invalid credentials")
             }
@@ -95,12 +92,6 @@ const LoginPage = () => {
               </div>  
             )}
 
-
-
-
-
-
-
               <div>
                   <button type='button' className='blue_btn' onClick={handleCredentialSignIn}>
                       Login
@@ -123,11 +114,17 @@ const LoginPage = () => {
                         <Image src={'/assets/github.svg'} width={20} height={20} alt='GitHub'/>
                   </button>
               </div>
-          </form>
-          <p className='text-center text-gray-400'>
-              don't have an account Yet?
-              <Link href={'/register'} className='text-blue-700'> SignUp</Link>
-          </p>
+            </form>
+            <div>
+            <p className='text-center text-gray-400'>
+                don't have an account Yet?
+                <Link href={'/register'} className='text-blue-700'> SignUp</Link>
+            </p>
+            <p className='text-center text-gray-400'>
+                Forgot Password? Reset{"  "}
+                <Link href={'/ResetPassword'} className='text-blue-700'>Here</Link>
+            </p>
+            </div>
     </section>
   )
 }

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export function middleware(request) {
-    const loggedIn = request.cookies.has('sessionToken')
+    const loggedIn = request.cookies.has('sessionToken');
 
 
     if (!loggedIn && (request.nextUrl.pathname === "/movies" || request.nextUrl.pathname === "/music")) {

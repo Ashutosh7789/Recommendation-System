@@ -7,9 +7,9 @@ import google from './google.svg'
 import img1 from './img1.png'
 import img2 from './img2.png'
 import img3 from './img3.png'
-
+import img4 from './1.png'
 
 export {
     close, menuIcon,
-    cloud1, cloud2, github, google,img1, img2, img3
+    cloud1, cloud2, github, google, img1, img2, img3 , img4
 }

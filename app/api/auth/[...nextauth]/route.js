@@ -6,7 +6,7 @@ import { connectToDB } from '@/utils/Database';
 import { User } from "@/models/Schemas"
 import bcrypt from "bcrypt"
 
-
+await connectToDB();
 
 export const authOptions ={
     providers: [
@@ -24,7 +24,7 @@ export const authOptions ={
             async authorize(credentials) {
                 const { email, password } = credentials;
                 try {
-                    await connectToDB();
+                    
                     const user = await User.findOne({ email })
                     if (!user) {
                         return null
@@ -52,18 +52,7 @@ export const authOptions ={
                 return session;
             }
             session.user = sessionUser;
-            return session;
-            
-//  WORKS ONLY WHEN DATABASE HAVE USER DETAILS
-
-        // async session({session}) {
-        //     const sessionUser = await User.findOne({
-        //         email: session.user.email
-        //     })
-        //     session.user = sessionUser;
-        //     return session;
-        // },
-            
+            return session;  
         },
     },
     cookies: {

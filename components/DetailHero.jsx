@@ -32,10 +32,6 @@ const DetailHero = ({id}) => {
     }, [])
 
 
-
-
-
-
     return (
       <>
         {isLoading && (

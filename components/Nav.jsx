@@ -4,10 +4,12 @@ import { useRouter } from "next/navigation"
 import { signOut, useSession } from 'next-auth/react';
 import { useState } from "react";
 import { navLinks } from "@/constants";
-import { MdLogout } from "react-icons/md"
-import { CgProfile } from "react-icons/cg"
-import { HiMenuAlt3 } from "react-icons/hi"
-import {IoClose} from "react-icons/io5"
+import { MdLogout ,  MdPassword } from "react-icons/md"
+// import { CgProfile } from "react-icons/cg"
+import { HiMenuAlt3, HiDownload } from "react-icons/hi"
+import { IoClose } from "react-icons/io5"
+// import QRCode from "qrcode.react"
+import ResetPassword from './../app/ResetPassword/page';
 
 
 const Nav = () => {
@@ -16,9 +18,28 @@ const Nav = () => {
     const [menu, setMenu] = useState(false)
     const [toggle, setToggle] = useState(false)
     const firstLetter = session?.user?.name?.charAt(0).toUpperCase() || session?.user?.username?.charAt(0).toUpperCase()
+    
+    // const QRCodeText = 'dahiyahitesh064@oksbi'
 
     const handleSignOut = async () => {
     await signOut({ callbackUrl: 'http://localhost:3000' })
+  }
+
+  const downloadFile = () => {
+    const DownloadUrl = 'http://localhost:3000/assets/final_ppt.pptx'
+    const aTag = document.createElement('a');
+    aTag.href = DownloadUrl;
+    aTag.download = "FlixWave.pptx"
+
+    // Append the anchor to the body
+    document.body.appendChild(aTag);
+
+    // Trigger a click on the anchor to start the download
+    aTag.click();
+
+    // Remove the anchor from the body
+    document.body.removeChild(aTag);
+
   }
 
 
@@ -38,10 +59,15 @@ const Nav = () => {
                                 <a href={link.url}>{link.title}</a>
                             </li>
                     ))}
+          {/* <QRCode value={QRCodeText} /> */}
             </ul>
                         
         </div>
           
+      
+
+
+        {/* Mobile View */}
         <div className="flex items-center justify-end flex-1 sm:hidden">
             {toggle===false && (     
               <span onClick={() => setToggle((prev) => !prev)} className="text-white">
@@ -64,11 +90,12 @@ const Nav = () => {
                     ))}
                       {session && (
                         <ul className="flex flex-col items-center justify-end flex-1 gap-4 list-none">
-                            {/* <li className="font-normal cursor-pointer text-[16px] text-white flex gap-2">
-                                <a href="/profile">
-                                    Profile  
-                                </a>
-                            </li> */}
+                            <li className="font-normal cursor-pointer text-[16px] text-white flex gap-2">
+                              <button type="button" className="text-white flex gap-2" onClick={downloadFile}>
+                                Download
+                            </button>
+                                
+                            </li>
 
                         <button type="button" className="text-white flex gap-2" onClick={handleSignOut}>
                                 Logout
@@ -88,7 +115,7 @@ const Nav = () => {
 
 
 
-
+      {/* Desktop View */}
         <div className="items-center gap-4 hidden sm:flex">
                   {session && (
                       <div>
@@ -101,14 +128,21 @@ const Nav = () => {
                   {menu && (
                         <div className="p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar">
                         <div className="flex flex-col gap-4 items-start">
-                        {/* <ul className="flex flex-col items-center justify-end flex-1 gap-4 list-none">
-                              <li className="font-normal cursor-pointer text-[16px] text-white flex gap-2">
-                                <span><CgProfile size={25} /></span>
-                                <a href="/profile">
-                                    Profile  
-                                </a>
-                              </li>
-                        </ul> */}
+                        <ul className="flex flex-col items-center justify-end flex-1 gap-4 list-none">
+                          <li className="font-normal cursor-pointer text-[16px] text-white flex gap-2">
+                            <button type="button" className="text-white flex gap-2" onClick={downloadFile}>
+                              <span><HiDownload size={25} /></span>
+                                Download
+                            </button>
+                          </li>
+                        </ul>
+                        
+                        <button type="button" className="text-white flex gap-2" onClick={()=> router.push('/ResetPassword')}>
+                              <span>
+                                <MdPassword size={25} />
+                              </span>
+                              Change 
+                        </button>
                         <button type="button" className="text-white flex gap-2" onClick={handleSignOut}>
                               <span>
                               <MdLogout size={25} />

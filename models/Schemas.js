@@ -20,6 +20,17 @@ const UserSchema = new Schema({
     }
 });
 
+const ResetSchema = new Schema({
+        email: {
+        type: 'string',
+        unique: [true, 'Email already exist!'],
+        required: [true, 'Email required!'],
+    },
+        OTP: {
+        type: 'string',
+    },
+})
+
 const historySchema = new Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   searchTerm: { type: String, required: true },
@@ -32,7 +43,8 @@ const historySchema = new Schema({
 // Create User and History models
 const User = models.User || model('User', UserSchema);
 const History = models.History || model('History', historySchema);
+const ResetPassword = models.ResetPassword || model('ResetPassword', ResetSchema);
 
 export {
-    User, History
+    User, History , ResetPassword
 }

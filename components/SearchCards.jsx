@@ -36,15 +36,15 @@ const SearchCards = () => {
     }
 
     const getMovieData = async () => {
-        const Url = searchText ? searchUrl: popularUrl 
-        const response = await fetch(Url, options)
-        const data = await response.json()
-        setMovieData(data.results)
-        if (data.total_pages > 100) {
-            setTotalPages(100)
-        } else {
-            setTotalPages(data.total_pages)
-        }
+      const Url = searchText ? searchUrl: popularUrl; 
+      const response = await fetch(Url, options);
+      const data = await response.json();
+      setMovieData(data.results);
+      if (data.total_pages > 100) {
+          setTotalPages(100);
+      } else {
+          setTotalPages(data.total_pages);
+      }
     }
     
     useEffect(() => {
@@ -54,7 +54,9 @@ const SearchCards = () => {
 
   return (
     <div className="flex justify-center flex-col">
-        <form className="flex rounded-full justify-center my-10 gap-2 md:gap-4">
+        <form
+          className="flex rounded-full justify-center my-10 gap-2 md:gap-4"
+        >
         <input type="text" name="searchText"
             className="w-full max-w-[30rem] md:max-w-[40rem] py-4 px-6 border rounded-xl bg-slate-50 
             outline-none text-black text-lg"
